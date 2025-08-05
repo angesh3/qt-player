@@ -1,0 +1,17 @@
+name: Claude Code Completion
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-claude:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Claude
+        uses: anthropics/claude-code-action@main
+        with:
+          api-key: ${{ secrets.CLAUDE_API_KEY }}
